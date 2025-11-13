@@ -832,6 +832,7 @@ impl SettingsStore {
         settings_content: Option<&str>,
         cx: &mut App,
     ) -> std::result::Result<(), InvalidSettingsError> {
+        dbg!(&kind, &directory_path);
         let mut zed_settings_changed = false;
         match (
             kind,
@@ -946,6 +947,7 @@ impl SettingsStore {
             }
         };
 
+        dbg!(&self.local_settings);
         if zed_settings_changed {
             self.recompute_values(Some((root_id, &directory_path)), cx);
         }
